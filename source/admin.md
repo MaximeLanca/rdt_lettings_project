@@ -12,8 +12,5 @@ L'enregistrement se fait simplement via `admin.site.register(...)` dans
 `letting/admin.py` et `profiles/admin.py` (pas de classe `ModelAdmin`
 personnalisée à ce jour).
 
-## Créer un superutilisateur
-
-```bash
-python manage.py createsuperuser
-```
+Pour créer un compte permettant de se connecter au panel, voir [Installation
+et développement local](installation.md).

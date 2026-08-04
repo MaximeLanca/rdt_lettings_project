@@ -1,43 +1,26 @@
 # Architecture
 
-## Arborescence du projet
-
-```text
-Python-OC-Lettings-FR/
-├── oc_lettings_site/   # Application racine : settings, urls, page d'accueil, erreurs 404/500
-├── letting/            # Application "locations" : modèles Address et Letting
-├── profiles/           # Application "profils" : modèle Profile (extension de User)
-├── config/
-│   └── sentry.py       # Initialisation du SDK Sentry
-├── static/              # CSS, JS, images, fonts
-├── docs/                # Documentation Sphinx (ce site)
-├── manage.py
-├── main.py
-├── Dockerfile
-├── requirements.txt
-└── .github/workflows/ci-cd.yml
-```
-
 ## Applications Django
 
 Chaque application suit la structure standard Django : `models.py`,
 `views.py`, `urls.py`, `admin.py`, `apps.py`, `migrations/`, `templates/`,
 et un dossier `tests/`.
 
-```{mermaid}
-flowchart LR
-    User[Navigateur] --> Root[oc_lettings_site.urls]
-    Root -->|/| Index[oc_lettings_site.views.index]
-    Root -->|/lettings/*| Letting[letting.urls]
-    Root -->|/profiles/*| Profiles[profiles.urls]
-    Root -->|/admin/*| Admin[django.contrib.admin]
-    Letting --> LettingModel[(Letting / Address)]
-    Profiles --> ProfileModel[(Profile → User)]
-```
+Le projet est composé de trois applications :
 
-> Si le diagramme ci-dessus ne s'affiche pas, l'extension Mermaid n'est pas
-> activée dans la configuration Sphinx ; le flux reste décrit textuellement
-> dans [Routes](urls.md).
+- **`oc_lettings_site`** est l'application racine. Elle reçoit toutes les
+  requêtes en premier (`oc_lettings_site.urls`) et affiche la page
+  d'accueil. Elle délègue ensuite aux applications `letting` et `profiles`
+  selon le préfixe d'URL (`/lettings/*` ou `/profiles/*`), et prend en
+  charge les pages d'erreur 404/500 ainsi que le panel d'administration
+  Django (`/admin/*`).
+- **`letting`** gère les locations : ses vues lisent et affichent les
+  modèles `Letting` et `Address`.
+- **`profiles`** gère les profils utilisateurs : ses vues lisent et
+  affichent le modèle `Profile`, lié à un `User` Django.
+
+Voir [Applications](apps.md) pour le détail des modèles et vues de chaque
+application, et [Routes](urls.md) pour la liste complète des URLs.
 
 ## Journalisation
 

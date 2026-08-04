@@ -68,8 +68,14 @@ coverage run -m pytest
 coverage report --fail-under=80
 ```
 
+## Créer un superutilisateur
+
+```bash
+python manage.py createsuperuser
+```
+
 ## Panel d'administration
 
 Aller sur [http://localhost:8000/admin](http://localhost:8000/admin) et se
-connecter avec les identifiants de test fournis par le jeu de données
-(`fixtures.json`).
+connecter avec le compte créé ci-dessus (ou avec les identifiants de test
+fournis par le jeu de données, voir [Tests](testing.md)).

@@ -27,12 +27,3 @@ Chaque application possède ses propres migrations dans `<app>/migrations/`.
 Notamment, `oc_lettings_site` et `letting`/`profiles` contiennent des
 migrations de type "copy data", utilisées lors de la restructuration du
 projet en applications séparées.
-
-## Jeu de données
-
-Le fichier `fixtures.json` à la racine contient des données de test
-(profils, locations, adresses) chargeables via :
-
-```bash
-python manage.py loaddata fixtures.json
-```

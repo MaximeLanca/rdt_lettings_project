@@ -1,9 +1,5 @@
 # Configuration de build pour Read the Docs.
 # https://docs.readthedocs.io/en/stable/config-file/v2.html
-#
-# Ce fichier est à la racine du dépôt de documentation (dépôt séparé du
-# projet Python-OC-Lettings-FR). Les chemins ci-dessous sont donc relatifs
-# à ce dépôt, pas à celui du code.
 
 version: 2
 
